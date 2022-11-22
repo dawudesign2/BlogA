@@ -1,0 +1,32 @@
+<section class="container">
+   <div class="row justify-content-center">
+    <div *ngIf="inValidLogin" class="alert alert-danger" role="alert">
+      {{errMessage}}
+    </div>
+    <div class="input-group mb-3">
+        <input 
+            type="text" 
+            class="form-control" 
+            placeholder="Username" 
+            aria-label="Username" 
+            aria-describedby="basic-addon1"
+            [(ngModel)]="username"
+            >
+      </div>
+      <div class="input-group mb-3">
+        <input 
+            type="password" 
+            class="form-control" 
+            placeholder="Password"
+            aria-label="Password"
+            aria-describedby="basic-addon1"
+            [(ngModel)]="password"
+            >
+      </div>
+        <button 
+            class="btn btn-primary"
+            (click)="handlerLogin()"
+            >Login</button>
+
+   </div>
+</section>

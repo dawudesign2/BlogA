@@ -11,7 +11,12 @@ import { HomeComponent } from './home/home.component';
 import { ErrorsComponent } from './errors/errors.component';
 import { LogoutComponent } from './logout/logout.component';
 import { AdminComponent } from './admin/admin.component';
-
+import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
+import { HttpInterceptorService } from './service/http-interceptor.service';
+import { ArticleComponent } from './admin/article/article.component';
+import { CategoryComponent } from './admin/category/category.component';
+import { UserComponent } from './admin/user/user.component';
+import { CategoryAddComponent } from './admin/category/category-add/category-add.component';
 
 @NgModule({
   declarations: [
@@ -23,13 +28,20 @@ import { AdminComponent } from './admin/admin.component';
     ErrorsComponent,
     LogoutComponent,
     AdminComponent,
+    ArticleComponent,
+    CategoryComponent,
+    UserComponent,
+    CategoryAddComponent,
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
-    FormsModule
+    FormsModule,
+    HttpClientModule
   ],
-  providers: [],
+  providers: [
+    { provide: HTTP_INTERCEPTORS, useClass: HttpInterceptorService, multi: true }
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

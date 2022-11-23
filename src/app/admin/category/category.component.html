@@ -1,0 +1,33 @@
+<div class="container">
+    <div *ngIf="message" class="alert alert-info" role="alert">
+        {{message}}
+    </div>
+    <h2>All categories</h2>
+    <RouterLink 
+        class="btn btn-primary" 
+        *ngIf="auth.isUserLoggedIn()" 
+        [routerLink]="['/admin/categories/add']">
+        Add a category
+    </RouterLink>
+    <table class="table">
+        <thead>
+            <tr>
+                <th>#</th>
+                <th>Title</th>
+                <th>Action</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let category of categories">
+                <td>{{category.id}}</td>
+                <td>{{category.title}}</td>
+                <td>
+                    <button type="button" class="btn btn-success ml-3"
+                        (click)="updateCategory(category.id)">Update</button>
+                    <button type="button" class="btn btn-danger ml-3"
+                        (click)="deleteCategory(category.id)">Delete</button>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</div>
